@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.multipart.MultipartHttpServletRequest
-
+import java.io.*
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
-import java.io.*
 
 @Controller
 class FileUploadController {
@@ -46,8 +45,8 @@ class FileUploadController {
     fun handleFileUpload(request: HttpServletRequest): String {
         val files = (request as MultipartHttpServletRequest)
                 .getFiles("file")
-        var file: MultipartFile? = null
-        var stream: BufferedOutputStream? = null
+        var file: MultipartFile?
+        var stream: BufferedOutputStream?
         for (i in files.indices) {
             file = files[i]
             if (!file!!.isEmpty) {
@@ -59,7 +58,6 @@ class FileUploadController {
                     stream.close()
 
                 } catch (e: Exception) {
-                    stream = null
                     return "You failed to upload $i => "+e.message
 
                 }
