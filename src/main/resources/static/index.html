@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p>Get your greeting <a href="/greeting">here</a></p>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    文件：<input type="file" name="file"/>
+    <input type="submit"/>
+</form>
+<a href="/download">下载文件</a>
+<p>多文件上传</p>
+<form method="POST" enctype="multipart/form-data" action="/multipleSave">
+    <p>文件1：<input type="file" name="file"/></p>
+    <p>文件2：<input type="file" name="file"/></p>
+    <p><input type="submit" value="上传"/></p>
+</form>
+<h1 th:text="${host}">Hello World</h1>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+HelloWorldMaven.iml
+src/test
+target/
+gs-rest-service.iml
