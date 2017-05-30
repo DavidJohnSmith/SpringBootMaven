@@ -1,5 +1,6 @@
-package hello
+package hellokotlin
 
+import hello.Application
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
@@ -7,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
  * Created by dongxie on 2017/5/7.
  */
 @SpringBootApplication
-open class Application1 {
+open class Application {
     init {
 
     }
 }
 fun main(args: Array<String>) {
-    SpringApplication.run(Application1::class.java, *args)
+    SpringApplication.run(Application::class.java, *args)
 }

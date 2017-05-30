@@ -1,4 +1,4 @@
-package hello.controller
+package hellokotlin.controller
 
 /**
  * Created by dongxie on 2017/5/7.
@@ -58,7 +58,7 @@ class FileUploadController {
                     stream.close()
 
                 } catch (e: Exception) {
-                    return "You failed to upload $i => "+e.message
+                    return "You failed to upload $i => " + e.message
 
                 }
 
@@ -87,7 +87,7 @@ class FileUploadController {
 
                 } catch (e: Exception) {
                     stream = null
-                    return "You failed to upload " + file.originalFilename + " => "+e.message
+                    return "You failed to upload " + file.originalFilename + " => " + e.message
                 } finally {
                     if (null != stream) {
                         try {
@@ -99,7 +99,7 @@ class FileUploadController {
                     }
                 }
             } else {
-                return "You failed to upload " + file.originalFilename+" because the file was empty."
+                return "You failed to upload " + file.originalFilename + " because the file was empty."
             }
 
         }

@@ -1,4 +1,4 @@
-package hello.bean
+package hellokotlin.bean
 
 /**
  * Created by dongxie on 2017/5/7.
