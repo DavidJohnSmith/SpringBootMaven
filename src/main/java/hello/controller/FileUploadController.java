@@ -4,6 +4,8 @@ package hello.controller;
  * Created by dongxie on 2017/5/7.
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,10 +17,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.Enumeration;
 import java.util.List;
 
 @Controller
 public class FileUploadController {
+
+    private static Logger log = LoggerFactory.getLogger(FileUploadController.class);
 
     @RequestMapping("/upload")
     @ResponseBody
@@ -37,6 +42,21 @@ public class FileUploadController {
         } else {
             return "upload failed,because file is empty";
         }
+    }
+
+    @RequestMapping(value = "/get_request", method = RequestMethod.GET)
+    @ResponseBody
+    public String getRequest(HttpServletRequest request) {
+        log.info(request.getQueryString());
+        log.info("--------request.getHeader()--------");
+        Enumeration<String> em = request.getHeaderNames();
+        while (em.hasMoreElements()) {
+            String name = em.nextElement();
+            String value = request.getHeader(name);
+            log.info(name + "=" + value);
+        }
+        return "Hello World!";
+
     }
 
 
