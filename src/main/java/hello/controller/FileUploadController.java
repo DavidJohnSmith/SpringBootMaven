@@ -7,18 +7,17 @@ package hello.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class FileUploadController {
@@ -56,6 +55,27 @@ public class FileUploadController {
             log.info(name + "=" + value);
         }
         return "Hello World!";
+
+    }
+
+
+    @RequestMapping(value = "/post_request", method = RequestMethod.POST)
+    @ResponseBody
+    public String postRequest(HttpServletRequest request, @RequestBody String code) {
+        Map<String, String[]> map = request.getParameterMap();
+        for (String name : map.keySet()) {
+            String[] values = map.get(name);
+            log.info(name + "=" + Arrays.toString(values));
+        }
+        log.info("get json:" + code);
+        log.info("--------request.getHeader()--------");
+        Enumeration<String> em = request.getHeaderNames();
+        while (em.hasMoreElements()) {
+            String name = em.nextElement();
+            String value = request.getHeader(name);
+            log.info(name + "=" + value);
+        }
+        return "Hello World";
 
     }
 
